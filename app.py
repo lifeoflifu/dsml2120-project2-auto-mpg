@@ -88,7 +88,7 @@ def gallery_page() -> None:
     brand_filter = st.selectbox("Minimum cars per brand", list(thresholds), key="gallery_min_brand")
     ranked = brands.loc[brands["cars"].ge(thresholds[brand_filter])].head(10)
     leader = ranked.iloc[0]
-    five_car_leader = brands.loc[brands["cars"].ge(5)].iloc[0]
+    single_car_brands = brands["cars"].eq(1).sum()
     largest = brands.loc[brands["cars"].idxmax()]
     chart_and_notes(
         brand_bars(ranked),
@@ -100,10 +100,10 @@ def gallery_page() -> None:
         [
             f"**{leader.brand}** leads this view at **{leader.average_mpg:.1f} MPG** "
             f"based on {leader.cars} {'car' if leader.cars == 1 else 'cars'}.",
-            f"Among brands with five or more cars, **{five_car_leader.brand}** leads at "
-            f"**{five_car_leader.average_mpg:.1f} MPG**.",
+            f"**{single_car_brands} of {len(brands)} brands** appear just once in the dataset. "
+            "Their averages describe one sampled car each.",
             f"**{largest.brand}** has the broadest coverage ({largest.cars} cars). "
-            "Group sizes vary considerably across brands.",
+            f"Its average is **{largest.average_mpg:.1f} MPG**.",
         ],
     )
 
