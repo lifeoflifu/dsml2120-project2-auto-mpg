@@ -5,7 +5,7 @@ import pandas as pd
 import streamlit as st
 
 from auto_data import DATA_PATH, KAGGLE_URL, ORIGINS, UCI_URL, brand_summary, load_data, year_summary
-from charts import acceleration_boxes, brand_bars, horsepower_scatter, mpg_line
+from charts import TEAL, acceleration_boxes, brand_bars, horsepower_scatter, mpg_line
 
 
 st.set_page_config(page_title="Auto MPG · Lifu Deng", page_icon="🚘", layout="wide")
@@ -13,6 +13,7 @@ st.html("""
 <style>
 [data-testid="stMainBlockContainer"] {max-width: 1180px; padding-top: 2.75rem;}
 [data-testid="stHeading"] h1 {letter-spacing: -0.045em;}
+[data-testid="stCaptionContainer"] {opacity: 1; color: #4D5D65;}
 [data-testid="stMetric"] {
     background: #E9F2EE; border: 1px solid #CEDFD7;
     border-radius: 0.65rem; padding: 0.8rem 1rem;
@@ -137,8 +138,18 @@ def gallery_page() -> None:
     first, last = years.iloc[0], years.iloc[-1]
     best = years.loc[years["median_mpg"].idxmax()]
     year_1973 = years.set_index("model_year").loc[1973, "median_mpg"]
+    trend = mpg_line(data)
+    trend.add_annotation(
+        x=int(best.model_year),
+        y=best.median_mpg,
+        text=f"{int(best.model_year)} peak · {best.median_mpg:.1f} MPG",
+        ax=-70,
+        ay=-28,
+        arrowhead=2,
+        arrowcolor=TEAL,
+    )
     chart_and_notes(
-        mpg_line(data),
+        trend,
         [
             "Each point represents the median MPG of one model year.",
             "A rising line shows an increase in median MPG between model years.",

@@ -1,8 +1,12 @@
 # Auto MPG | Fuel Economy & Performance
 
-**Lifu Deng · DSML 2120 · Project 2**
+A Streamlit portfolio and dashboard that explores city fuel economy and performance across the cars in the Auto MPG dataset. Compare brands, explore the relationship between horsepower and MPG, follow model-year trends, and compare 0–60 mph times across cylinder counts.
 
-A Streamlit portfolio and dashboard that explores city fuel economy and performance across the cars in the Auto MPG dataset. Compare brands, explore the relationship between horsepower and MPG, follow model-year trends, and compare 0–60 mph times across cylinder counts. [Professional GitHub profile](https://github.com/lifeoflifu)
+[Open the live Streamlit app](https://lifu-dsml2120-auto-mpg.streamlit.app/)
+
+## Author and contact
+
+**Lifu Deng · DSML 2120 · Project 2** · [Professional GitHub profile](https://github.com/lifeoflifu)
 
 ## App navigation
 
@@ -10,6 +14,14 @@ A Streamlit portfolio and dashboard that explores city fuel economy and performa
 - **EDA Gallery** presents four questions with a bar chart, scatter plot, line chart, and box plot. Each chart includes a reading guide, observations, and source credit.
 - **Dashboard** filters the same records by model year and origin. The filters update all three KPIs, both charts, and the insights.
 - **Future Work** outlines four next steps and reflects on changes from the Lab 4.3 prototype.
+
+The app builds on the question-driven exploration from Project 1, the Streamlit navigation and interactive charts from Labs 4.1–4.2, and the shared filters and dashboard layout from Lab 4.3.
+
+## Screenshots
+
+![EDA Gallery with a ranked brand MPG bar chart and a minimum sample size control](assets/eda-gallery.jpg)
+
+![Dashboard with two filters, three summary metrics, a model-year trend line, and a horsepower scatter plot](assets/dashboard.jpg)
 
 ## Dataset
 
